@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Tugas 2 penambangan data - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Welcome to MkDocs</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Tugas 2 penambangan data</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#pengertian-data-mining">Pengertian Data Mining</a></li>
+            <li><a href="#manfaat-data-mining">Manfaat Data Mining</a></li>
+            <li><a href="#contoh-data-mining">Contoh Data Mining</a></li>
+            <li><a href="#menhitung-jarak">menhitung jarak</a></li>
+            <li><a href="#menghitung-jarak-biner">menghitung jarak biner</a></li>
+            <li><a href="#menghitung-catagorical">menghitung catagorical</a></li>
+            <li><a href="#menghitung-jarak-ordinal">menghitung jarak ordinal</a></li>
+            <li><a href="#menghitung-jarak-campuran">menghitung jarak campuran</a></li>
+            <li><a href="#mengukur-jarak-data">Mengukur Jarak Data</a></li>
+            <li><a href="#jarak-numeric">Jarak numeric</a></li>
+            <li><a href="#jarak-ordinal">Jarak Ordinal</a></li>
+            <li><a href="#jarak-categorical">Jarak categorical</a></li>
+            <li><a href="#jarak-binary">Jarak binary</a></li>
+            <li><a href="#jarak-campuran">Jarak campuran</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="pengertian-data-mining">Pengertian Data Mining</h2>
+<p>Data Mining adalah proses memilah-milah sejumlah data yang berkaitan (data set) untuk mengidentifikasi pola dan membangun hubungan untuk memecahkan masalah melalui analisa data. Alat data mining memungkinkan individu atau perusahaan untuk memprediksi tren masa depan. Jika diartikan atau diterjemahkan secara harfiah, data mining adalah pengemangan data.</p>
+<p>Kalimat lain untuk menjelaskannya, data mining adalah proses menemukan anomali, pola dan korelasi diantara berbagai data set yang besar untuk memprediksi hasil. Dengan menggunakan berbagai teknik, kita dapat menggunakan informasi yang digali untuk meningkatkan pendapatan, efisiensi, meningkatkan pelayanan pelanggan, mengurangi risiko, dan masih banyak lagi.</p>
+<h3 id="manfaat-data-mining">Manfaat Data Mining</h3>
+<p>Jika dijelaskan secara umum, manfaat data mining adalah untuk mengungkap pola yang tersembunyi dan hubungan dalam data yang dapat digunakan untuk membuat prediksi yang bermanfaat untuk bisnis.</p>
+<p>Manfaat data mining secara spesifik sangat beragam tergantung tujuan dan industri yang dijalankan. Bagian penjualan dan pemasaran dapat menggali data pelanggan untuk meningkatkan tingkat konversi prospek atau untuk membuat materi pemasaran one-to-one. Informasi data mining mengenai pola sejarah penjualan dan perilaku pelanggan dapat digunakan untuk membangun model prediksi yang bermanfaat untuk penjualan di masa mendatang, membuat produk atau layanan baru.</p>
+<p>Perusahaan dalam industri keuangan menggunakan alat data mining untuk membangun model risiko dan mendeteksi penipuan. Industri manufaktur menggunakan alat data mining untuk meningkatkan keamanan produk, mengidentifikasi masalah kualitas, mengelola rantai pasokan barang dan meningkatkan operasional.</p>
+<h3 id="contoh-data-mining">Contoh Data Mining</h3>
+<p>Berikut adalah contoh data mining yang sederhana. Bisa dijadikan sebagai inspirasi untuk meningkatkan dan menyempurnakan strategi pemasaran dan unggul dalam persaingan bisnis.</p>
+<h3 id="menhitung-jarak">menhitung jarak</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;chord.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_2_0.png" /></p>
+<h3 id="menghitung-jarak-biner">menghitung jarak biner</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;menghitung jarak biner.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_4_0.png" /></p>
+<h3 id="menghitung-catagorical">menghitung catagorical</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;categorical.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_6_0.png" /></p>
+<h3 id="menghitung-jarak-ordinal">menghitung jarak ordinal</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;ordinal.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_8_0.png" /></p>
+<h3 id="menghitung-jarak-campuran">menghitung jarak campuran</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;campuran.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_10_0.png" /></p>
+<h3 id="mengukur-jarak-data">Mengukur Jarak Data</h3>
+<h4 id="tugas-ii-mengukur-jarak-data">Tugas II Mengukur Jarak Data</h4>
+<pre><code class="python">from scipy import stats
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+</code></pre>
+
+<pre><code class="python">df = pd.read_csv('databaru.csv')
+k=df.iloc[10:16]
+k
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>umur istri</th>
+      <th>pendidikan istri</th>
+      <th>pendidikan suami</th>
+      <th>jumlah anak</th>
+      <th>agama istri</th>
+      <th>perkerjaan istri</th>
+      <th>kependudukan suami</th>
+      <th>taraf kehidupan</th>
+      <th>paparan media</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>38</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>42</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>44</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>42</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>38</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>26</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python">numerical=[0,3]
+categorical=[1,2,6,7]
+binary=[4,5,8]
+ordinal=[1,2]
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+     [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v4-v5&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v5-v6&quot;]+[0]+[0]+[0]+[0]+[0]
+
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-numeric">Jarak numeric</h3>
+<pre><code class="python">def chordDist(v1,v2,jnis):
+    jmlh=0
+    normv1=0
+    normv2=0
+    for x in range (len(jnis)):
+        normv1=normv1+(int(k.values.tolist()[v1][jnis[x]])**2)
+        normv2=normv2+(int(k.values.tolist()[v1][jnis[x]])**2)
+        jmlh=jmlh+(int(k.values.tolist()[v1][jnis[x]])*int(k.values.tolist()[v2][jnis[x]]))
+    return ((2-(2*jmlh/(normv1*normv2)))**0.5)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[0]+[0]+[0],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[0]+[0]+[0],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[0]+[0]+[0],
+
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-ordinal">Jarak Ordinal</h3>
+<pre><code class="python">def ordDist(v1,v2,jns):
+    jmlh=0
+    for x in range (len(jns)):
+        z1=int(k.values.tolist()[v1][jns[x]])-1
+        z2=int(k.values.tolist()[v2][jns[x]])-1
+        jmlh=jmlh+chordDist(z1,z2,jns)
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-categorical">Jarak categorical</h3>
+<pre><code class="python">def categoricalDist(v1,v2,jnis):
+    jmlh=0
+    for x in range (len(jnis)):
+        if (k.values.tolist()[v1][jnis[x]])!=(k.values.tolist()[v2][jnis[x]]):
+            jmlh=jmlh+1
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-binary">Jarak binary</h3>
+<pre><code class="python">def binaryDist(v1,v2,jnis):
+    q=0
+    r=0
+    s=0
+    t=0
+    for x in range (len(jnis)):
+        if (int(k.values.tolist()[v1][jnis[x]]))==1 and (int(k.values.tolist()[v2][jnis[x]]))==1:
+            q=q+1
+        elif (int(k.values.tolist()[v1][jnis[x]]))==1 and (int(k.values.tolist()[v2][jnis[x]]))==2:
+            r=r+1
+        elif (int(k.values.tolist()[v1][jnis[x]]))==2 and (int(k.values.tolist()[v2][jnis[x]]))==1:
+            s=s+1
+        else:
+            t=t+1
+    return ((r+s)/(q+r+s+t))
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-campuran">Jarak campuran</h3>
+<pre><code class="python">def jarak(v1,v2):
+    return ((chordDist(v1,v2,numerical)+ordDist(v1,v2,ordinal)+categoricalDist(v1,v2,categorical)+binaryDist(v1,v2,binary))/4)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<pre><code class="python">
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
