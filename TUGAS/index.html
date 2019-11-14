@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>TUGAS - My Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Welcome to MkDocs</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">TUGAS</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#kumpulan-tugas">KUMPULAN TUGAS</a></li>
+        <li class="main "><a href="#tugas-10">TUGAS 1.0</a></li>
+        <li class="main "><a href="#tugas-20">TUGAS 2.0</a></li>
+            <li><a href="#pengertian-data-mining">Pengertian Data Mining</a></li>
+        <li class="main "><a href="#tugas-30">TUGAS 3.0</a></li>
+        <li class="main "><a href="#naive-bayes-classifier">Naive Bayes Classifier</a></li>
+            <li><a href="#langkah-langkah-training">Langkah-Langkah Training</a></li>
+        <li class="main "><a href="#tugas-40">TUGAS 4.0</a></li>
+        <li class="main "><a href="#naive-bayes-classifier_1">Naive Bayes Classifier</a></li>
+            <li><a href="#langkah-langkah-training_1">Langkah-Langkah Training</a></li>
+            <li><a href="#real-test">Real Test</a></li>
+        <li class="main "><a href="#tugas-50">TUGAS 5.0</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="kumpulan-tugas">KUMPULAN TUGAS</h1>
+<h1 id="tugas-10">TUGAS 1.0</h1>
+<pre><code class="python">from scipy import stats
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+</code></pre>
+
+<pre><code class="python">df = pd.read_csv('datanorita.csv')
+df
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>berat badan</th>
+      <th>tinggi badan</th>
+      <th>tekanan darah</th>
+      <th>lingkar perut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>80</td>
+      <td>163</td>
+      <td>106</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>51</td>
+      <td>180</td>
+      <td>117</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>43</td>
+      <td>150</td>
+      <td>106</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>65</td>
+      <td>156</td>
+      <td>105</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>48</td>
+      <td>150</td>
+      <td>113</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>76</td>
+      <td>155</td>
+      <td>113</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>45</td>
+      <td>158</td>
+      <td>126</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>54</td>
+      <td>158</td>
+      <td>129</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>65</td>
+      <td>153</td>
+      <td>106</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>66</td>
+      <td>153</td>
+      <td>104</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>73</td>
+      <td>169</td>
+      <td>114</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>53</td>
+      <td>151</td>
+      <td>119</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>74</td>
+      <td>167</td>
+      <td>110</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>48</td>
+      <td>173</td>
+      <td>118</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>68</td>
+      <td>179</td>
+      <td>124</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>41</td>
+      <td>163</td>
+      <td>104</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>54</td>
+      <td>163</td>
+      <td>128</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>45</td>
+      <td>155</td>
+      <td>112</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>71</td>
+      <td>154</td>
+      <td>116</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>72</td>
+      <td>162</td>
+      <td>110</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>62</td>
+      <td>167</td>
+      <td>122</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>73</td>
+      <td>168</td>
+      <td>116</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>45</td>
+      <td>158</td>
+      <td>100</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>48</td>
+      <td>151</td>
+      <td>116</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>63</td>
+      <td>172</td>
+      <td>106</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>61</td>
+      <td>175</td>
+      <td>110</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>76</td>
+      <td>166</td>
+      <td>102</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>77</td>
+      <td>153</td>
+      <td>129</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>73</td>
+      <td>164</td>
+      <td>128</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>51</td>
+      <td>159</td>
+      <td>123</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>68</td>
+      <td>175</td>
+      <td>123</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>53</td>
+      <td>166</td>
+      <td>113</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>58</td>
+      <td>174</td>
+      <td>107</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>67</td>
+      <td>175</td>
+      <td>121</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>76</td>
+      <td>153</td>
+      <td>121</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>57</td>
+      <td>159</td>
+      <td>128</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>55</td>
+      <td>154</td>
+      <td>127</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>51</td>
+      <td>150</td>
+      <td>129</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>66</td>
+      <td>160</td>
+      <td>120</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>44</td>
+      <td>161</td>
+      <td>128</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>47</td>
+      <td>178</td>
+      <td>119</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>60</td>
+      <td>159</td>
+      <td>110</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>76</td>
+      <td>166</td>
+      <td>117</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>58</td>
+      <td>171</td>
+      <td>123</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>56</td>
+      <td>151</td>
+      <td>108</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>50</td>
+      <td>165</td>
+      <td>130</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>67</td>
+      <td>158</td>
+      <td>104</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>63</td>
+      <td>158</td>
+      <td>111</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>66</td>
+      <td>157</td>
+      <td>127</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>43</td>
+      <td>151</td>
+      <td>117</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>61</td>
+      <td>173</td>
+      <td>128</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>42</td>
+      <td>172</td>
+      <td>124</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>53</td>
+      <td>152</td>
+      <td>104</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>46</td>
+      <td>161</td>
+      <td>112</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>76</td>
+      <td>164</td>
+      <td>115</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>79</td>
+      <td>160</td>
+      <td>114</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>73</td>
+      <td>159</td>
+      <td>107</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>42</td>
+      <td>153</td>
+      <td>127</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>44</td>
+      <td>161</td>
+      <td>127</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>54</td>
+      <td>163</td>
+      <td>124</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 4 columns</p>
+</div>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+        [&quot;method&quot;]+[x for x in df.columns],
+        [&quot;count()&quot;]+[df[col].count() for col in df.columns],
+        [&quot;mean()&quot;]+[df[col].mean() for col in df.columns],
+        [&quot;std()&quot;]+[&quot;{:.2f}&quot;.format(df[col].std()) for col in df.columns],
+        [&quot;min()&quot;]+[df[col].min() for col in df.columns],
+        [&quot;max()&quot;]+[df[col].max() for col in df.columns],
+        [&quot;q1()&quot;]+[df[col].quantile(0.25) for col in df.columns],
+        [&quot;q2()&quot;]+[df[col].quantile(0.50) for col in df.columns],
+        [&quot;q3&quot;]+[df[col].quantile(0.75) for col in df.columns],
+        [&quot;skew&quot;]+[&quot;{:.2f}&quot;.format(df[col].skew()) for col in df.columns],
+     ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>method </td><td>berat badan</td><td>tinggi badan</td><td>tekanan darah</td><td>lingkar perut</td></tr>
+<tr><td>count()</td><td>100        </td><td>100         </td><td>100          </td><td>100          </td></tr>
+<tr><td>mean() </td><td>59.47      </td><td>163.96      </td><td>115.97       </td><td>55.77        </td></tr>
+<tr><td>std()  </td><td>11.32      </td><td>9.06        </td><td>8.66         </td><td>9.22         </td></tr>
+<tr><td>min()  </td><td>40         </td><td>150         </td><td>100          </td><td>40           </td></tr>
+<tr><td>max()  </td><td>80         </td><td>180         </td><td>130          </td><td>70           </td></tr>
+<tr><td>q1()   </td><td>51.0       </td><td>156.75      </td><td>109.0        </td><td>48.0         </td></tr>
+<tr><td>q2()   </td><td>61.0       </td><td>163.0       </td><td>116.0        </td><td>57.0         </td></tr>
+<tr><td>q3()   </td><td>67.25      </td><td>172.25      </td><td>123.0        </td><td>63.0         </td></tr>
+<tr><td>skew() </td><td>0.06       </td><td>0.15        </td><td>0.00         </td><td>-0.21        </td></tr>
+</tbody>
+</table>
+
+<h1 id="tugas-20">TUGAS 2.0</h1>
+<h2 id="pengertian-data-mining">Pengertian Data Mining</h2>
+<p>Data Mining adalah proses memilah-milah sejumlah data yang berkaitan (data set) untuk mengidentifikasi pola dan membangun hubungan untuk memecahkan masalah melalui analisa data. Alat data mining memungkinkan individu atau perusahaan untuk memprediksi tren masa depan. Jika diartikan atau diterjemahkan secara harfiah, data mining adalah pengemangan data.</p>
+<p>Kalimat lain untuk menjelaskannya, data mining adalah proses menemukan anomali, pola dan korelasi diantara berbagai data set yang besar untuk memprediksi hasil. Dengan menggunakan berbagai teknik, kita dapat menggunakan informasi yang digali untuk meningkatkan pendapatan, efisiensi, meningkatkan pelayanan pelanggan, mengurangi risiko, dan masih banyak lagi.</p>
+<h3 id="manfaat-data-mining">Manfaat Data Mining</h3>
+<p>Jika dijelaskan secara umum, manfaat data mining adalah untuk mengungkap pola yang tersembunyi dan hubungan dalam data yang dapat digunakan untuk membuat prediksi yang bermanfaat untuk bisnis.</p>
+<p>Manfaat data mining secara spesifik sangat beragam tergantung tujuan dan industri yang dijalankan. Bagian penjualan dan pemasaran dapat menggali data pelanggan untuk meningkatkan tingkat konversi prospek atau untuk membuat materi pemasaran one-to-one. Informasi data mining mengenai pola sejarah penjualan dan perilaku pelanggan dapat digunakan untuk membangun model prediksi yang bermanfaat untuk penjualan di masa mendatang, membuat produk atau layanan baru.</p>
+<p>Perusahaan dalam industri keuangan menggunakan alat data mining untuk membangun model risiko dan mendeteksi penipuan. Industri manufaktur menggunakan alat data mining untuk meningkatkan keamanan produk, mengidentifikasi masalah kualitas, mengelola rantai pasokan barang dan meningkatkan operasional.</p>
+<h3 id="contoh-data-mining">Contoh Data Mining</h3>
+<p>Berikut adalah contoh data mining yang sederhana. Bisa dijadikan sebagai inspirasi untuk meningkatkan dan menyempurnakan strategi pemasaran dan unggul dalam persaingan bisnis.</p>
+<h3 id="menhitung-jarak">menhitung jarak</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;chord.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_2_0.png" /></p>
+<h3 id="menghitung-jarak-biner">menghitung jarak biner</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;menghitung jarak biner.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_4_0.png" /></p>
+<h3 id="menghitung-catagorical">menghitung catagorical</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;categorical.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_6_0.png" /></p>
+<h3 id="menghitung-jarak-ordinal">menghitung jarak ordinal</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;ordinal.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_8_0.png" /></p>
+<h3 id="menghitung-jarak-campuran">menghitung jarak campuran</h3>
+<pre><code class="python">from IPython.display import Image, display ;
+display(Image(filename=&quot;campuran.PNG&quot;))
+</code></pre>
+
+<p><img alt="png" src="tugas%202%20penambangan%20data_files/tugas%202%20penambangan%20data_10_0.png" /></p>
+<h3 id="mengukur-jarak-data">Mengukur Jarak Data</h3>
+<h4 id="tugas-ii-mengukur-jarak-data">Tugas II Mengukur Jarak Data</h4>
+<pre><code class="python">from scipy import stats
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+</code></pre>
+
+<pre><code class="python">df = pd.read_csv('databaru.csv')
+k=df.iloc[10:16]
+k
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>umur istri</th>
+      <th>pendidikan istri</th>
+      <th>pendidikan suami</th>
+      <th>jumlah anak</th>
+      <th>agama istri</th>
+      <th>perkerjaan istri</th>
+      <th>kependudukan suami</th>
+      <th>taraf kehidupan</th>
+      <th>paparan media</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>38</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>42</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>44</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>42</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>38</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>26</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python">numerical=[0,3]
+categorical=[1,2,6,7]
+binary=[4,5,8]
+ordinal=[1,2]
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+     [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v4-v5&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v5-v6&quot;]+[0]+[0]+[0]+[0]+[0]
+
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>0      </td><td>0      </td><td>0          </td><td>0     </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-numeric">Jarak numeric</h3>
+<pre><code class="python">def chordDist(v1,v2,jnis):
+    jmlh=0
+    normv1=0
+    normv2=0
+    for x in range (len(jnis)):
+        normv1=normv1+(int(k.values.tolist()[v1][jnis[x]])**2)
+        normv2=normv2+(int(k.values.tolist()[v1][jnis[x]])**2)
+        jmlh=jmlh+(int(k.values.tolist()[v1][jnis[x]])*int(k.values.tolist()[v2][jnis[x]]))
+    return ((2-(2*jmlh/(normv1*normv2)))**0.5)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[0]+[0]+[0],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[0]+[0]+[0],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[0]+[0]+[0],
+
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>0      </td><td>0          </td><td>0     </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-ordinal">Jarak Ordinal</h3>
+<pre><code class="python">def ordDist(v1,v2,jns):
+    jmlh=0
+    for x in range (len(jns)):
+        z1=int(k.values.tolist()[v1][jns[x]])-1
+        z2=int(k.values.tolist()[v2][jns[x]])-1
+        jmlh=jmlh+chordDist(z1,z2,jns)
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-categorical">Jarak categorical</h3>
+<pre><code class="python">def categoricalDist(v1,v2,jnis):
+    jmlh=0
+    for x in range (len(jnis)):
+        if (k.values.tolist()[v1][jnis[x]])!=(k.values.tolist()[v2][jnis[x]]):
+            jmlh=jmlh+1
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-binary">Jarak binary</h3>
+<pre><code class="python">def binaryDist(v1,v2,jnis):
+    q=0
+    r=0
+    s=0
+    t=0
+    for x in range (len(jnis)):
+        if (int(k.values.tolist()[v1][jnis[x]]))==1 and (int(k.values.tolist()[v2][jnis[x]]))==1:
+            q=q+1
+        elif (int(k.values.tolist()[v1][jnis[x]]))==1 and (int(k.values.tolist()[v2][jnis[x]]))==2:
+            r=r+1
+        elif (int(k.values.tolist()[v1][jnis[x]]))==2 and (int(k.values.tolist()[v2][jnis[x]]))==1:
+            s=s+1
+        else:
+            t=t+1
+    return ((r+s)/(q+r+s+t))
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<h3 id="jarak-campuran">Jarak campuran</h3>
+<pre><code class="python">def jarak(v1,v2):
+    return ((chordDist(v1,v2,numerical)+ordDist(v1,v2,ordinal)+categoricalDist(v1,v2,categorical)+binaryDist(v1,v2,binary))/4)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,1,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(0,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v2-v3&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(1,2,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v3-v4&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(2,3,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v4-v5&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(3,4,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(3,4,ordinal))]+[categoricalDist(3,4,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v5-v6&quot;]+[0]+[&quot;{:.2f}&quot;.format(chordDist(4,5,numerical))]+[&quot;{:.2f}&quot;.format(ordDist(4,5,ordinal))]+[categoricalDist(4,5,categorical)]+[binaryDist(0,1,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<table>
+<tbody>
+<tr><td>Data </td><td>Jarak</td><td>Numeric</td><td>Ordinal</td><td>Categorical</td><td>Binary</td></tr>
+<tr><td>v1-v2</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v1-v3</td><td>0    </td><td>1.41   </td><td>2.71   </td><td>4          </td><td>0.0   </td></tr>
+<tr><td>v2-v3</td><td>0    </td><td>1.41   </td><td>2.69   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v3-v4</td><td>0    </td><td>1.41   </td><td>2.76   </td><td>3          </td><td>0.0   </td></tr>
+<tr><td>v4-v5</td><td>0    </td><td>1.41   </td><td>2.74   </td><td>2          </td><td>0.0   </td></tr>
+<tr><td>v5-v6</td><td>0    </td><td>1.41   </td><td>2.78   </td><td>3          </td><td>0.0   </td></tr>
+</tbody>
+</table>
+
+<pre><code class="python">
+</code></pre>
+
+<h1 id="tugas-30">TUGAS 3.0</h1>
+<h1 id="naive-bayes-classifier">Naive Bayes Classifier</h1>
+<p>Classifier adalah model machine learning yang digunakan untuk membedakan objek berdasarkan fitur tertentu.</p>
+<p>Naive Bayes Classifier adalah machine learning yang menggunakan probabilitas untuk mengklasfikasi objek dimana untuk setiap fitur $X$ sejumlah $n$ : </p>
+<p>$$ P(\operatorname{C_k}) = \frac{\left(\prod_{i=1}^n P(X_i|C_k)\right)P(C_k)}{P(X)} $$</p>
+<p>$P$ adalah probabilitas yang muncul. Untuk data numerik $P$ adalah:</p>
+<p>$$ P(x=v|C_k) = \frac{1}{\sqrt{2\pi\sigma^2_k}}\exp\left(-\frac{(v-\mu_k)^2}{2\sigma^2_k}\right) $$</p>
+<p>dimana $v$ adalah nilai dalam fitur, $\sigma_k$ adalah Standar deviasi dan $\mu_k$ adalah Rata-rata untuk K (kolom)</p>
+<h2 id="langkah-langkah-training">Langkah-Langkah Training</h2>
+<h4 id="1-ambil-data-set">1. Ambil data set</h4>
+<pre><code class="python">from sklearn import datasets
+from pandas import *
+from numpy import *
+from math import *
+
+from IPython.display import HTML, display; from tabulate import tabulate
+def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))
+</code></pre>
+
+<pre><code class="python"># IRIS TRAINING TABLE
+iris = datasets.load_iris()
+data = [list(s)+[iris.target_names[iris.target[i]]] for i,s in enumerate(iris.data)]
+dataset = DataFrame(data, columns=iris.feature_names+['class']).sample(frac=0.2)
+table(dataset)
+</code></pre>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                6.9</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               4.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.3</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.1</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               1.8</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                7.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.1</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               4.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                3.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.7</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+</tbody>
+</table>
+
+<h4 id="2-sampel-data-untuk-di-tes">2. Sampel data untuk di tes</h4>
+<pre><code class="python">test = [3,5,2,4]
+print(&quot;sampel data: &quot;, test)
+</code></pre>
+
+<pre><code>sampel data:  [3, 5, 2, 4]
+</code></pre>
+<h4 id="3-identifikasi-per-grup-class-target-untuk-data-training">3. Identifikasi Per Grup Class Target untuk data Training</h4>
+<pre><code class="python">dataset_classes = {}
+# table per classes
+for key,group in dataset.groupby('class'):
+    mu_s = [group[c].mean() for c in group.columns[:-1]]
+    sigma_s = [group[c].std() for c in group.columns[:-1]]
+    dataset_classes[key] = [group, mu_s, sigma_s]
+    print(key, &quot;===&gt;&quot;)
+    print('Mu_s =&gt;', array(mu_s))
+    print('Sigma_s =&gt;', array(sigma_s))
+    table(group)
+
+</code></pre>
+
+<pre><code>setosa ===&gt;
+Mu_s =&gt; [5.18333333 3.56666667 1.51666667 0.31666667]
+Sigma_s =&gt; [0.3250641  0.22509257 0.14719601 0.1602082 ]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class  </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.4</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.3</td><td>setosa </td></tr>
+</tbody>
+</table>
+
+<pre><code>versicolor ===&gt;
+Mu_s =&gt; [5.89166667 2.76666667 4.13333333 1.26666667]
+Sigma_s =&gt; [0.52476546 0.33393884 0.46188022 0.21461735]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.6</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.1</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+</tbody>
+</table>
+
+<pre><code>virginica ===&gt;
+Mu_s =&gt; [6.61666667 3.13333333 5.58333333 2.06666667]
+Sigma_s =&gt; [0.7790826  0.34465617 0.59670814 0.23868326]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class    </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.5</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.1</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.2</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.9</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+</tbody>
+</table>
+
+<h4 id="5-hitung-probabilitas-prior-dan-likehood">5. Hitung Probabilitas Prior dan Likehood</h4>
+<p>WIP: Probabilitas Evidence masukkan ke hitungan</p>
+<pre><code class="python">
+def numericalPriorProbability(v, mu, sigma):
+    return (1.0/sqrt(2 * pi * (sigma ** 2))*exp(-((v-mu)**2)/(2*(sigma**2))))
+
+def categoricalProbability(sample,universe):
+    return sample.shape[0]/universe.shape[0]
+
+Ps = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(test)]+
+          [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+
+table(DataFrame(Ps, columns=[&quot;classes&quot;]+[&quot;P( %d | C )&quot; % d for d in test]+[&quot;P( C )&quot;]))
+</code></pre>
+
+<table>
+<thead>
+<tr><th>classes   </th><th style="text-align: right;">  P( 3 | C )</th><th style="text-align: right;">  P( 5 | C )</th><th style="text-align: right;">  P( 2 | C )</th><th style="text-align: right;">  P( 4 | C )</th><th style="text-align: right;">  P( C )</th></tr>
+</thead>
+<tbody>
+<tr><td>setosa    </td><td style="text-align: right;"> 1.96232e-10</td><td style="text-align: right;"> 2.77721e-09</td><td style="text-align: right;"> 0.0123515  </td><td style="text-align: right;">4.13093e-115</td><td style="text-align: right;">     0.2</td></tr>
+<tr><td>versicolor</td><td style="text-align: right;"> 1.93812e-07</td><td style="text-align: right;"> 2.31644e-10</td><td style="text-align: right;"> 2.01329e-05</td><td style="text-align: right;">1.11579e-35 </td><td style="text-align: right;">     0.4</td></tr>
+<tr><td>virginica </td><td style="text-align: right;"> 1.07096e-05</td><td style="text-align: right;"> 4.94165e-07</td><td style="text-align: right;"> 9.87125e-09</td><td style="text-align: right;">9.46396e-15 </td><td style="text-align: right;">     0.4</td></tr>
+</tbody>
+</table>
+
+<h4 id="6-rank-tarik-kesimpulan">6. Rank &amp; Tarik Kesimpulan</h4>
+<pre><code class="python">Pss = ([[r[0], prod(r[1:])] for r in Ps])
+PDss = DataFrame(Pss, columns=['class', 'probability']).sort_values('probability')[::-1]
+table(PDss)
+</code></pre>
+
+<table>
+<thead>
+<tr><th>class     </th><th style="text-align: right;">  probability</th></tr>
+</thead>
+<tbody>
+<tr><td>virginica </td><td style="text-align: right;"> 1.97766e-34 </td></tr>
+<tr><td>versicolor</td><td style="text-align: right;"> 4.03412e-57 </td></tr>
+<tr><td>setosa    </td><td style="text-align: right;"> 5.56132e-136</td></tr>
+</tbody>
+</table>
+
+<pre><code class="python">print(&quot;Prediksi Bayes untuk&quot;, test, &quot;adalah&quot;, PDss.values[0,0])
+</code></pre>
+
+<pre><code>Prediksi Bayes untuk [3, 5, 2, 4] adalah virginica
+</code></pre>
+<p>Setelah kita sudah menghitung untuk data training kita, kita akan lakukan test lagi untuk data asli kita</p>
+<pre><code class="python"># ONE FUNCTION FOR CLASSIFIER
+
+def predict(sampel):
+    priorLikehoods = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(sampel)]+
+          [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+    products = ([[r[0], prod(r[1:])] for r in priorLikehoods])
+    result = DataFrame(products, columns=['class', 'probability']).sort_values('probability')[::-1]
+    return result.values[0,0]
+
+dataset_test = DataFrame([list(d)+[predict(d[:4])] for d in data], columns=list(dataset.columns)+['predicted class (by predict())'])
+table(dataset_test)
+</code></pre>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th><th>predicted class (by predict())  </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.3</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.1</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               4  </td><td style="text-align: right;">                1.2</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               4.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1  </td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.5</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.9</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               4.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               4.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.2</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.5</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.9</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.3</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                7  </td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2  </td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                3.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>versicolor</td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.3</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.7</td><td>versicolor</td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.8</td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.3</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3  </td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.9</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.7</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                7.3</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                6.3</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.3</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.3</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                6.9</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.5</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               1.6</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.9</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.5</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               1.4</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.4</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.9</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                5.4</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+</tbody>
+</table>
+
+<h4 id="kesimpulan">Kesimpulan</h4>
+<pre><code class="python">
+corrects = dataset_test.loc[dataset_test['class'] == dataset_test['predicted class (by predict())']].shape[0]
+print('Prediksi Training Bayes: %d of %d == %f %%' % (corrects, len(data), corrects / len(data) * 100))
+</code></pre>
+
+<pre><code>Prediksi Training Bayes: 144 of 150 == 96.000000 %
+</code></pre>
+<h1 id="tugas-40">TUGAS 4.0</h1>
+<h1 id="naive-bayes-classifier_1">Naive Bayes Classifier</h1>
+<p>Naive Bayes Classifier adalah classifier dimana untuk setiap fitur $X$ sejumlah $n$ : </p>
+<p>$$ P(\operatorname{C_k}) = \frac{\left(\prod_{i=1}^n P(X_i|C_k)\right)P(C_k)}{P(X)} $$</p>
+<p>Layman terms:</p>
+<p>$$ \operatorname{posterior} = \frac{\operatorname{prior}\times\operatorname{likehood}}{\operatorname{evidence}} $$ </p>
+<p>$P$ adalah probabilitas yang muncul. Untuk data numerik $P$ adalah:</p>
+<p>$$ P(x=v|C_k) = \frac{1}{\sqrt{2\pi\sigma^2_k}}\exp\left(-\frac{(v-\mu_k)^2}{2\sigma^2_k}\right) $$</p>
+<p>dimana $v$ adalah nilai dalam fitur, $\sigma_k$ adalah Standar deviasi dan $\mu_k$ adalah Rata-rata untuk K (kolom)</p>
+<h2 id="langkah-langkah-training_1">Langkah-Langkah Training</h2>
+<h4 id="1-ambil-data-set_1">1. Ambil data set</h4>
+<pre><code class="python">from sklearn import datasets
+from pandas import *
+from numpy import *
+from math import *
+
+from IPython.display import HTML, display; from tabulate import tabulate
+def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))
+</code></pre>
+
+<pre><code class="python"># IRIS TRAINING TABLE
+iris = datasets.load_iris()
+data = [list(s)+[iris.target_names[iris.target[i]]] for i,s in enumerate(iris.data)]
+dataset = DataFrame(data, columns=iris.feature_names+['class']).sample(frac=0.2)
+table(dataset)
+</code></pre>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                6.9</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               4.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.3</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.1</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               1.8</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                7.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.1</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               4.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                3.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.7</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.2</td><td>setosa    </td></tr>
+</tbody>
+</table>
+
+<h4 id="2-sampel-data-untuk-di-tes_1">2. Sampel data untuk di tes</h4>
+<pre><code class="python">test = [3,5,2,4]
+print(&quot;sampel data: &quot;, test)
+</code></pre>
+
+<pre><code>sampel data:  [3, 5, 2, 4]
+</code></pre>
+<h4 id="3-identifikasi-per-grup-class-target-untuk-data-training_1">3. Identifikasi Per Grup Class Target untuk data Training</h4>
+<pre><code class="python">dataset_classes = {}
+# table per classes
+for key,group in dataset.groupby('class'):
+    mu_s = [group[c].mean() for c in group.columns[:-1]]
+    sigma_s = [group[c].std() for c in group.columns[:-1]]
+    dataset_classes[key] = [group, mu_s, sigma_s]
+    print(key, &quot;===&gt;&quot;)
+    print('Mu_s =&gt;', array(mu_s))
+    print('Sigma_s =&gt;', array(sigma_s))
+    table(group)
+
+</code></pre>
+
+<pre><code>setosa ===&gt;
+Mu_s =&gt; [5.18333333 3.56666667 1.51666667 0.31666667]
+Sigma_s =&gt; [0.3250641  0.22509257 0.14719601 0.1602082 ]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class  </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.4</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.3</td><td>setosa </td></tr>
+</tbody>
+</table>
+
+<pre><code>versicolor ===&gt;
+Mu_s =&gt; [5.89166667 2.76666667 4.13333333 1.26666667]
+Sigma_s =&gt; [0.52476546 0.33393884 0.46188022 0.21461735]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.6</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.1</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td></tr>
+</tbody>
+</table>
+
+<pre><code>virginica ===&gt;
+Mu_s =&gt; [6.61666667 3.13333333 5.58333333 2.06666667]
+Sigma_s =&gt; [0.7790826  0.34465617 0.59670814 0.23868326]
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class    </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.5</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.1</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.2</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica</td></tr>
+<tr><td style="text-align: right;">                7.9</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2  </td><td>virginica</td></tr>
+</tbody>
+</table>
+
+<h4 id="5-hitung-probabilitas-prior-dan-likehood_1">5. Hitung Probabilitas Prior dan Likehood</h4>
+<p>WIP: Probabilitas Evidence masukkan ke hitungan</p>
+<pre><code class="python">
+def numericalPriorProbability(v, mu, sigma):
+    return (1.0/sqrt(2 * pi * (sigma ** 2))*exp(-((v-mu)**2)/(2*(sigma**2))))
+
+def categoricalProbability(sample,universe):
+    return sample.shape[0]/universe.shape[0]
+
+Ps = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(test)]+
+          [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+
+table(DataFrame(Ps, columns=[&quot;classes&quot;]+[&quot;P( %d | C )&quot; % d for d in test]+[&quot;P( C )&quot;]))
+</code></pre>
+
+<table>
+<thead>
+<tr><th>classes   </th><th style="text-align: right;">  P( 3 | C )</th><th style="text-align: right;">  P( 5 | C )</th><th style="text-align: right;">  P( 2 | C )</th><th style="text-align: right;">  P( 4 | C )</th><th style="text-align: right;">  P( C )</th></tr>
+</thead>
+<tbody>
+<tr><td>setosa    </td><td style="text-align: right;"> 1.96232e-10</td><td style="text-align: right;"> 2.77721e-09</td><td style="text-align: right;"> 0.0123515  </td><td style="text-align: right;">4.13093e-115</td><td style="text-align: right;">     0.2</td></tr>
+<tr><td>versicolor</td><td style="text-align: right;"> 1.93812e-07</td><td style="text-align: right;"> 2.31644e-10</td><td style="text-align: right;"> 2.01329e-05</td><td style="text-align: right;">1.11579e-35 </td><td style="text-align: right;">     0.4</td></tr>
+<tr><td>virginica </td><td style="text-align: right;"> 1.07096e-05</td><td style="text-align: right;"> 4.94165e-07</td><td style="text-align: right;"> 9.87125e-09</td><td style="text-align: right;">9.46396e-15 </td><td style="text-align: right;">     0.4</td></tr>
+</tbody>
+</table>
+
+<h4 id="6-rank-tarik-kesimpulan_1">6. Rank &amp; Tarik Kesimpulan</h4>
+<pre><code class="python">Pss = ([[r[0], prod(r[1:])] for r in Ps])
+PDss = DataFrame(Pss, columns=['class', 'probability']).sort_values('probability')[::-1]
+table(PDss)
+</code></pre>
+
+<table>
+<thead>
+<tr><th>class     </th><th style="text-align: right;">  probability</th></tr>
+</thead>
+<tbody>
+<tr><td>virginica </td><td style="text-align: right;"> 1.97766e-34 </td></tr>
+<tr><td>versicolor</td><td style="text-align: right;"> 4.03412e-57 </td></tr>
+<tr><td>setosa    </td><td style="text-align: right;"> 5.56132e-136</td></tr>
+</tbody>
+</table>
+
+<pre><code class="python">print(&quot;Prediksi Bayes untuk&quot;, test, &quot;adalah&quot;, PDss.values[0,0])
+</code></pre>
+
+<pre><code>Prediksi Bayes untuk [3, 5, 2, 4] adalah virginica
+</code></pre>
+<h2 id="real-test">Real Test</h2>
+<p>diberikan variabel <code>dataset</code> dan <code>dataset_classes</code> yang sebagai 'data training' kita, mari kita lakukan itu untuk real Iris data:</p>
+<pre><code class="python"># ONE FUNCTION FOR CLASSIFIER
+
+def predict(sampel):
+    priorLikehoods = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(sampel)]+
+          [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+    products = ([[r[0], prod(r[1:])] for r in priorLikehoods])
+    result = DataFrame(products, columns=['class', 'probability']).sort_values('probability')[::-1]
+    return result.values[0,0]
+
+dataset_test = DataFrame([list(d)+[predict(d[:4])] for d in data], columns=list(dataset.columns)+['predicted class (by predict())'])
+table(dataset_test)
+</code></pre>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  sepal length (cm)</th><th style="text-align: right;">  sepal width (cm)</th><th style="text-align: right;">  petal length (cm)</th><th style="text-align: right;">  petal width (cm)</th><th>class     </th><th>predicted class (by predict())  </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.3</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.1</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               4  </td><td style="text-align: right;">                1.2</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               4.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.9</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1  </td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                1.7</td><td style="text-align: right;">               0.5</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.9</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.7</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               4.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               4.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.2</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.1</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.5</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.3</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.5</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.6</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.9</td><td style="text-align: right;">               0.4</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.3</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                1.6</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                4.6</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5.3</td><td style="text-align: right;">               3.7</td><td style="text-align: right;">                1.5</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                1.4</td><td style="text-align: right;">               0.2</td><td>setosa    </td><td>setosa                          </td></tr>
+<tr><td style="text-align: right;">                7  </td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2  </td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                3.6</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>versicolor</td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.3</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.7</td><td>versicolor</td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                3.5</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.8</td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.4</td><td style="text-align: right;">                3.7</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                3.9</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.4</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.6</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                4.7</td><td style="text-align: right;">               1.5</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4.4</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.6</td><td style="text-align: right;">               1.4</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                4  </td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5  </td><td style="text-align: right;">               2.3</td><td style="text-align: right;">                3.3</td><td style="text-align: right;">               1  </td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.2</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.2</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                4.3</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                3  </td><td style="text-align: right;">               1.1</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.1</td><td style="text-align: right;">               1.3</td><td>versicolor</td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.9</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.6</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.6</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                4.5</td><td style="text-align: right;">               1.7</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                7.3</td><td style="text-align: right;">               2.9</td><td style="text-align: right;">                6.3</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.6</td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.3</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.3</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                6.9</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               2.2</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.5</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                6.7</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                6  </td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.9</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.2</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.8</td><td style="text-align: right;">               1.6</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                7.9</td><td style="text-align: right;">               3.8</td><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.2</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.8</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.5</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.6</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               1.4</td><td>virginica </td><td>versicolor                      </td></tr>
+<tr><td style="text-align: right;">                7.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                6.1</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.4</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.5</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6  </td><td style="text-align: right;">               3  </td><td style="text-align: right;">                4.8</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.4</td><td style="text-align: right;">               2.1</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.6</td><td style="text-align: right;">               2.4</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.9</td><td style="text-align: right;">               3.1</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.8</td><td style="text-align: right;">               2.7</td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.8</td><td style="text-align: right;">               3.2</td><td style="text-align: right;">                5.9</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3.3</td><td style="text-align: right;">                5.7</td><td style="text-align: right;">               2.5</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.7</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.3</td><td style="text-align: right;">               2.5</td><td style="text-align: right;">                5  </td><td style="text-align: right;">               1.9</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.5</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.2</td><td style="text-align: right;">               2  </td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                6.2</td><td style="text-align: right;">               3.4</td><td style="text-align: right;">                5.4</td><td style="text-align: right;">               2.3</td><td>virginica </td><td>virginica                       </td></tr>
+<tr><td style="text-align: right;">                5.9</td><td style="text-align: right;">               3  </td><td style="text-align: right;">                5.1</td><td style="text-align: right;">               1.8</td><td>virginica </td><td>virginica                       </td></tr>
+</tbody>
+</table>
+
+<h4 id="kesimpulan_1">Kesimpulan</h4>
+<pre><code class="python">
+corrects = dataset_test.loc[dataset_test['class'] == dataset_test['predicted class (by predict())']].shape[0]
+print('Prediksi Training Bayes: %d of %d == %f %%' % (corrects, len(data), corrects / len(data) * 100))
+</code></pre>
+
+<pre><code>Prediksi Training Bayes: 144 of 150 == 96.000000 %
+</code></pre>
+<h1 id="tugas-50">TUGAS 5.0</h1>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvJzHFgLjatW5UDRJffncVG-BWgtTICZPOTjFtcHfLVDOsZaQtt4PqfkQ4Si4D-g/pubhtml?widget=true&amp;headers=true"></iframe></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
